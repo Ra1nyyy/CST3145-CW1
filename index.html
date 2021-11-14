@@ -7,21 +7,33 @@
     <title>Individual Coursework 1</title>
     <script src="https://unpkg.com/vue"></script>
     <link rel="stylesheet" href="vue.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
     <div id="app">
-        <h1 v-html='sitename'></h1>
-        <div class="children">
-            <img v-bind:src='product.image' width="200" height="200">
-        </div>
-        <div class="children">
+        <header>
+            <h1 v-html='sitename'></h1>
+            <button @click='showCheckout'>
+                {{cartItemCount}}
+                <span class="fas fa-cart-plus"></span>Checkout
+            </button>
+        </header>
+        <main>
+            <div v-if='showProduct'></div>
+            <figure>
+                <img v-bind:src='product.image' width="200" height="200">
+            </figure>
             <h2 v-html='product.subject'></h2>
             <p v-text='product.location'></p>
             <p>Price: {{product.price}}</p>
-            <p>Number of spaces: {{product.numberofspaces}}</p>
-            <button @click='product.numberofspaces -= 1' v-if="canAddToCart">Add to Cart</button>
-            <button disabled='disabled' v-else>Add to Cart</button>
-        </div>
+            <p>Avalable Inventory: {{product.availableInventory}}</p>
+            <button @click="addToCart" v-if="canAddToCart">Add to cart</button>
+            <button disabled='disable' v-else>Add to cart</button>
+            </div>
+            <div v-else>
+                <h1>Checkout</h1>
+            </div>
+        </main>
     </div>
 
 
@@ -29,18 +41,32 @@
         let webstore = new Vue ({
             el: '#app',
             data: {
+                showProduct: true,
                 sitename: '<strong>After School Club</strong>',
                 product: {
+                    id: 1001,
                     image: "product.png",
                     subject: "<strong>Math</strong>",
                     location: "London",
                     price: 100,
-                    numberofspaces: 5
+                    availableInventory: 5
+                },
+                cart: []
+            },
+            methods: {
+                addToCart: function(){
+                    this.cart.push(this.product.id);
+                },
+                showCheckout:function(){
+                    this.showProduct = this.showProduct ? false : true;
                 }
             },
             computed: {
                 canAddToCart() {
-                    return this.product.numberofspaces > 0
+                    return this.product.availableInventory > this.cartItemCount;
+                },
+                cartItemCount: function(){
+                    return this.cart.length || '';
                 }
             }
         })
