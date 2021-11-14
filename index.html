@@ -16,5 +16,19 @@
         <p v-text='product.location'></p>
         <p>Price: {{product.price}}</p>
     </div>
+    <script>
+        let webstore = new Vue ({
+            el: '#app',
+            data: {
+                sitename: '<strong>After School Club</strong>',
+                product: {
+                    image: "product.png",
+                    subject: "<strong>Math</strong>",
+                    location: "London",
+                    price: 100
+                }
+            }
+        })
+    </script>
 </body>
 </html>
