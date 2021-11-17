@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Individual Coursework 1</title>
     <script src="https://unpkg.com/vue"></script>
+    <script src="products.js"></script>
     <link rel="stylesheet" href="vue.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
@@ -21,25 +22,29 @@
         <main>
             <!-- Product Page-->
             <div v-if='showProduct'>
-                <figure>
-                    <img v-bind:src='product.image' width="200" height="200">
-                </figure>
-                <h2 v-html='product.subject'></h2>
-                <p v-text='product.location'></p>
-                <p>Price: {{product.price}}</p>
-                <p>Stock: {{product.availableInventory}}</p>
-                <button @click="addToCart" v-if="canAddToCart">Add to cart</button> 
-                <button disabled='disable' v-else>Add to cart</button>
-                <span v-if = "product.availableInventory === cartItemCount">
-                    All out!
-                </span>
-                <span v-else-if = "product.availableInventory - cartItemCount < 5">
-                    Only {{product.availableInventory - cartItemCount}} left!
-                </span>
-                <span v-else>Buy now!</span>
-                <div>
-                    <span v-for='n in product.rating'>★</span>
-                    <span v-for='n in 5-product.rating'>✰</span>
+                <div v-for="product in products">
+                    <figure>
+                        <img v-bind:src='product.image' width="200" height="200">
+                    </figure>
+                    <h2 v-html='product.subject'></h2>
+                    <p v-text='product.location'></p>
+                    <p>Price: {{product.price}}</p>
+                    <p>Stock: {{product.availableInventory}}</p>
+                    <!--Add to cart button-->
+                    <button @click="addToCart" v-if="canAddToCart">Add to cart</button> 
+                    <button disabled='disable' v-else>Add to cart</button>
+                    <span v-if = "product.availableInventory === cartItemCount">
+                        All out!
+                    </span>
+                    <span v-else-if = "product.availableInventory - cartItemCount < 5">
+                        Only {{product.availableInventory - cartItemCount}} left!
+                    </span>
+                    <span v-else>Buy now!</span>
+                    <!--Rating-->
+                    <div>
+                        <span v-for='n in product.rating'>★</span>
+                        <span v-for='n in 5-product.rating'>✰</span>
+                    </div>
                 </div>
             </div>
             <div v-else>
@@ -122,15 +127,16 @@
                     NV: 'Nevada'
                 },
                 sitename: '<strong>After School Club</strong>',
+                products: products,
                 product: {
-                    id: 1001,
-                    image: "product.png",
-                    subject: "<strong>Math</strong>",
-                    location: "London",
-                    price: 100,
-                    availableInventory: 10,
-                    rating: 4
-                },
+                        id: 1,
+                        image: "product.png",
+                        subject: "<strong>Math</strong>",
+                        location: "London",
+                        price: 100,
+                        availableInventory: 10,
+                        rating: 4
+                    },
                 cart: []
             },
             methods: {
