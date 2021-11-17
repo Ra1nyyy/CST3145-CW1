@@ -22,7 +22,7 @@
         <main>
             <!-- Product Page-->
             <div v-if='showProduct'>
-                <div v-for="product in products">
+                <div v-for="product in sortedProducts">
                     <figure>
                         <img v-bind:src='product.image' width="200" height="200">
                     </figure>
@@ -31,13 +31,13 @@
                     <p>Price: {{product.price}}</p>
                     <p>Stock: {{product.availableInventory}}</p>
                     <!--Add to cart button-->
-                    <button @click="addToCart" v-if="canAddToCart">Add to cart</button> 
+                    <button @click="addToCart(product)" v-if="canAddToCart(product)">Add to cart</button> 
                     <button disabled='disable' v-else>Add to cart</button>
-                    <span v-if = "product.availableInventory === cartItemCount">
+                    <span v-if = "itemLeft(product) === 0">
                         All out!
                     </span>
-                    <span v-else-if = "product.availableInventory - cartItemCount < 5">
-                        Only {{product.availableInventory - cartItemCount}} left!
+                    <span v-else-if = "itemLeft(product) < 5">
+                        Only {{itemLeft(product)}} left!
                     </span>
                     <span v-else>Buy now!</span>
                     <!--Rating-->
@@ -140,22 +140,43 @@
                 cart: []
             },
             methods: {
-                addToCart: function(){
-                    this.cart.push(this.product.id);
+                addToCart(product){
+                    this.cart.push(product.id);
                 },
                 showCheckout: function(){
                     this.showProduct = this.showProduct ? false : true;
                 },
                 submitForm: function(){
                     {alert('Order submitted!')}
+                },
+                canAddToCart(product) {
+                    return product.availableInventory > this.cartCount(product.id);
+                },
+                cartCount(id){
+                    let count = 0;
+                    for(let i = 0; i < this.cart.length; i++){
+                        if (this.cart[i] === id) {
+                            count++;
+                        }
+                    }
+                    return count;
+                },
+                itemLeft (product){
+                    return product.availableInventory - this.cartCount(product.id)
                 }
             },
             computed: {
-                canAddToCart: function() {
-                    return this.product.availableInventory > this.cartItemCount;
-                },
-                cartItemCount: function(){
+                
+                cartItemCount: function(id){
                     return this.cart.length || '';
+                },
+                sortedProducts: function(){
+                    function compare(a,b){
+                        if (a.price > b.price) return -1
+                        if (a.price < b.price) return 1
+                        return 0
+                    }
+                    return this.products.sort(compare)
                 }
             }
         })
