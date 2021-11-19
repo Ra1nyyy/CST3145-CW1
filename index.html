@@ -115,6 +115,10 @@
 
 
     <script>
+
+        // MY GLOBAL VARIABLES
+        let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{7,})");
+
         // VUE INSTANCE
         let webstore = new Vue ({
             el: '#app',
