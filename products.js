@@ -50,7 +50,7 @@ let products = [
         "subject": "<strong>Design and Technology</strong>",
         "location": "London",
         "price": 16,
-        "availableInventory": 4,
+        "availableInventory": 5,
         "rating": 4
     },
     {
