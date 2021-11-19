@@ -22,15 +22,13 @@
                     <span class="fas fa-cart-plus"></span>Checkout
                 </button>
             </div>
+            <br>
             <!-- SORT BUTTON -->
             <div class="sort">
                 <p>Sort by:
-                    <button @click="sortedRatingsHigh">High</button>
-                    <button @click="sortedRatingsLow">Lowest</button>
-                    <!-- <button @click="sortedPricesHigh">High</button>
-                    <button @click="sortedPriceLow">Lowest</button>
-                    <button @click="sortedStockHigh">High</button>
-                    <button @click="sortedStockHigh">Lowest</button> -->
+                    <button @click="sortedPriceHigh">Price: High to Low</button>
+                    <button @click="sortedPriceLow">Price: Low to High</button>
+                    <button @click="sortedRatingsHigh">Avg. Customer Review</button>
                 </p>
             </div>
         </header>

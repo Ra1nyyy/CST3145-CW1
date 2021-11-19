@@ -25,8 +25,8 @@
     font-size: 20px;
   }
   .sort {
-    margin-top: 2%;
-    padding-right: 92%;
+    padding-right: 62%;
+    display: inline-block;
   }
   .order {
     border: 5px solid black;
