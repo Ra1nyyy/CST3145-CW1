@@ -26,7 +26,7 @@
         <main>
             <!-- PRODUCT PAGE-->
             <div v-if='showProduct'>
-                <div v-for="product in sortedProductsHigh" class="product">
+                <div v-for="product in sortedRatingsHigh" class="product">
                     <figure>
                         <img v-bind:src='product.image' width="200" height="200">
                     </figure>
@@ -116,9 +116,6 @@
 
     <script>
 
-        // MY GLOBAL VARIABLES
-        let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{7,})");
-
         // VUE INSTANCE
         let webstore = new Vue ({
             el: '#app',
@@ -186,7 +183,7 @@
                 cartItemCount: function(id){
                     return this.cart.length || '';
                 },
-                sortedProductsHigh: function(){
+                sortedPriceHigh: function(){
                     function compare(a,b){
                         if (a.price > b.price) return -1
                         if (a.price < b.price) return 1
@@ -194,7 +191,7 @@
                     }
                     return this.products.sort(compare)
                 },
-                sortedProductsLow: function(){
+                sortedPriceLow: function(){
                     function compare(a,b){
                         if (a.price > b.price) return 1
                         if (a.price < b.price) return -1
@@ -202,10 +199,34 @@
                     }
                     return this.products.sort(compare)
                 },
-                sortedProductsStock: function(){
+                sortedStockHigh: function(){
                     function compare(a,b){
                         if (a.availableInventory > b.availableInventory) return -1
                         if (a.availableInventory < b.availableInventory) return 1
+                        return 0
+                    }
+                    return this.products.sort(compare)
+                },
+                sortedStockLow: function(){
+                    function compare(a,b){
+                        if (a.availableInventory > b.availableInventory) return 1
+                        if (a.availableInventory < b.availableInventory) return -1
+                        return 0
+                    }
+                    return this.products.sort(compare)
+                },
+                sortedRatingsHigh: function(){
+                    function compare(a,b){
+                        if (a.rating > b.rating) return -1
+                        if (a.rating < b.rating) return 1
+                        return 0
+                    }
+                    return this.products.sort(compare)
+                },
+                sortedRatingsLow: function(){
+                    function compare(a,b){
+                        if (a.rating > b.rating) return 1
+                        if (a.rating < b.rating) return -1
                         return 0
                     }
                     return this.products.sort(compare)
