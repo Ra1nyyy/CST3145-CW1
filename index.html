@@ -16,40 +16,55 @@
         <header>
             <h1 v-html='sitename'></h1>
             <!-- CHECKOUT BUTTON -->
-            <div>
+            <div class="checkoutbut">
                 <button @click='showCheckout'>
                     {{cartItemCount}}
                     <span class="fas fa-cart-plus"></span>Checkout
                 </button>
             </div>
+            <!-- SORT BUTTON -->
+            <div class="sort">
+                <p>Sort by:
+                    <button @click="sortedRatingsHigh">High</button>
+                    <button @click="sortedRatingsLow">Lowest</button>
+                    <!-- <button @click="sortedPricesHigh">High</button>
+                    <button @click="sortedPriceLow">Lowest</button>
+                    <button @click="sortedStockHigh">High</button>
+                    <button @click="sortedStockHigh">Lowest</button> -->
+                </p>
+            </div>
         </header>
         <main>
+            
             <!-- PRODUCT PAGE-->
             <div v-if='showProduct'>
-                <div v-for="product in sortedRatingsHigh" class="product">
-                    <figure>
-                        <img v-bind:src='product.image' width="200" height="200">
-                    </figure>
-                    <h2 v-html='product.subject'></h2>
-                    <p v-text='product.location'></p>
-                    <p>Price: {{product.price}}</p>
-                    <p>Stock: {{product.availableInventory}}</p>
-                    <!-- ADD TO CART BUTTON -->
-                    <button @click="addToCart(product)" @click="!seen = seen" v-if="canAddToCart(product)">Add to cart</button> 
-                    <button disabled='disable' v-else>Add to cart</button>
-                    <span v-if = "itemLeft(product) === 0">
-                        All out!
-                    </span>
-                    <span v-else-if = "itemLeft(product) < 5">
-                        Only {{itemLeft(product)}} left!
-                    </span>
-                    <span v-else>Buy now!</span>
-                    <!-- RATINGS -->
-                    <div>
-                        <span v-for='n in product.rating'>★</span>
-                        <span v-for='n in 5-product.rating'>✰</span>
+                <input type="text" v-model="search" id="search" placeholder="Search..">
+                <div v-for="product in filteredProducts" target="_blank">
+                    <div  class="product">
+                        <figure>
+                            <img v-bind:src='product.image' width="200" height="200">
+                        </figure>
+                        <h2 v-html='product.subject'></h2>
+                        <p v-text='product.location'></p>
+                        <p>Price: {{product.price}}</p>
+                        <p>Stock: {{product.availableInventory}}</p>
+                        <!-- ADD TO CART BUTTON -->
+                        <button @click="addToCart(product)" @click="!seen = seen" v-if="canAddToCart(product)">Add to cart</button> 
+                        <button disabled='disable' v-else>Add to cart</button>
+                        <span v-if = "itemLeft(product) === 0">
+                            All out!
+                        </span>
+                        <span v-else-if = "itemLeft(product) < 5">
+                            Only {{itemLeft(product)}} left!
+                        </span>
+                        <span v-else>Buy now!</span>
+                        <!-- RATINGS -->
+                        <div>
+                            <span v-for='n in product.rating'>★</span>
+                            <span v-for='n in 5-product.rating'>✰</span>
+                        </div>
                     </div>
-                </div>
+             </div>
             </div>
             <!-- CHECKOUT PAGE -->
             <div v-else>
@@ -92,13 +107,13 @@
                         <label for="business">Business</label>
                     </p>
                     <!-- SUBMIT BUTTON -->
-                    <button @click="submitForm">Place Order</button>
+                    <button @click="submitForm" id="orderbut">Place Order</button>
                     <p>
-                        <strong>Zip/Postal Code:</strong> <input v-model.number="order.zip" type="number" placeholder="Enter postcode.."/>
+                        <strong>Zip/Postal Code:</strong> <input v-model.number="order.zip" type="text" placeholder="Enter postcode.."/>
                     </p>
                 </div>
                 <!-- ORDER INFORMATION -->
-                <div class="checkout">
+                <div class="order">
                     <h2>Order Information</h2>
                     <p>First Name: {{order.firstName}}</p>
                     <p>Last Name: {{order.lastName}}</p>
@@ -120,6 +135,7 @@
         let webstore = new Vue ({
             el: '#app',
             data: {
+                search: "",
                 seen: true,
                 showProduct: true,
                 order:{
@@ -174,15 +190,6 @@
                     }
                     return count;
                 },
-                itemLeft (product){
-                    return product.availableInventory - this.cartCount(product.id)
-                }
-            },
-            computed: {
-                
-                cartItemCount: function(id){
-                    return this.cart.length || '';
-                },
                 sortedPriceHigh: function(){
                     function compare(a,b){
                         if (a.price > b.price) return -1
@@ -230,6 +237,68 @@
                         return 0
                     }
                     return this.products.sort(compare)
+                },
+                itemLeft (product){
+                    return product.availableInventory - this.cartCount(product.id)
+                }
+            },
+            computed: {
+                
+                cartItemCount: function(id){
+                    return this.cart.length || '';
+                },
+                // sortedPriceHigh: function(){
+                //     function compare(a,b){
+                //         if (a.price > b.price) return -1
+                //         if (a.price < b.price) return 1
+                //         return 0
+                //     }
+                //     return this.products.sort(compare)
+                // },
+                // sortedPriceLow: function(){
+                //     function compare(a,b){
+                //         if (a.price > b.price) return 1
+                //         if (a.price < b.price) return -1
+                //         return 0
+                //     }
+                //     return this.products.sort(compare)
+                // },
+                // sortedStockHigh: function(){
+                //     function compare(a,b){
+                //         if (a.availableInventory > b.availableInventory) return -1
+                //         if (a.availableInventory < b.availableInventory) return 1
+                //         return 0
+                //     }
+                //     return this.products.sort(compare)
+                // },
+                // sortedStockLow: function(){
+                //     function compare(a,b){
+                //         if (a.availableInventory > b.availableInventory) return 1
+                //         if (a.availableInventory < b.availableInventory) return -1
+                //         return 0
+                //     }
+                //     return this.products.sort(compare)
+                // },
+                // sortedRatingsHigh: function(){
+                //     function compare(a,b){
+                //         if (a.rating > b.rating) return -1
+                //         if (a.rating < b.rating) return 1
+                //         return 0
+                //     }
+                //     return this.products.sort(compare)
+                // },
+                // sortedRatingsLow: function(){
+                //     function compare(a,b){
+                //         if (a.rating > b.rating) return 1
+                //         if (a.rating < b.rating) return -1
+                //         return 0
+                //     }
+                //     return this.products.sort(compare)
+                // },
+                filteredProducts: function(){
+                    return this.products.filter((product) => {
+                        return product.subject.toLowerCase().includes(this.search.toLowerCase());
+                    })
                 }
             }
         })
