@@ -3,7 +3,7 @@ let products = [
         "id": 1,
         "image": "images/math.png",
         "subject": "<strong>Math</strong>",
-        "location": "London",
+        "location": "China",
         "price": 10,
         "availableInventory": 5,
         "rating": 5
@@ -12,7 +12,7 @@ let products = [
         "id": 2,
         "image": "images/english.jpg",
         "subject": "<strong>English</strong>",
-        "location": "London",
+        "location": "USA",
         "price": 120,
         "availableInventory": 5,
         "rating": 4
@@ -21,7 +21,7 @@ let products = [
         "id": 3,
         "image": "images/science.png",
         "subject": "<strong>Science</strong>",
-        "location": "London",
+        "location": "Tokyo",
         "price": 77,
         "availableInventory": 5,
         "rating": 2
@@ -30,7 +30,7 @@ let products = [
         "id": 4,
         "image": "images/history.jpg",
         "subject": "<strong>History</strong>",
-        "location": "London",
+        "location": "Germany",
         "price": 83,
         "availableInventory": 5,
         "rating": 2
@@ -39,7 +39,7 @@ let products = [
         "id": 5,
         "image": "images/geo.jpg",
         "subject": "<strong>Geography</strong>",
-        "location": "London",
+        "location": "Arica",
         "price": 33,
         "availableInventory": 5,
         "rating": 3
@@ -48,7 +48,7 @@ let products = [
         "id": 6,
         "image": "images/dandt.jpg",
         "subject": "<strong>Design and Technology</strong>",
-        "location": "London",
+        "location": "California",
         "price": 16,
         "availableInventory": 5,
         "rating": 4
@@ -66,7 +66,7 @@ let products = [
         "id": 8,
         "image": "images/music.jpg",
         "subject": "<strong>Music</strong>",
-        "location": "London",
+        "location": "South Korea",
         "price": 99,
         "availableInventory": 5,
         "rating": 0
@@ -75,7 +75,7 @@ let products = [
         "id": 9,
         "image": "images/pe.jpg",
         "subject": "<strong>Physical Education</strong>",
-        "location": "London",
+        "location": "Jamaica",
         "price": 100,
         "availableInventory": 5,
         "rating": 5
@@ -84,7 +84,7 @@ let products = [
         "id": 10,
         "image": "images/computing.jpg",
         "subject": "<strong>Computing</strong>",
-        "location": "London",
+        "location": "Philippines",
         "price": 72,
         "availableInventory": 5,
         "rating": 2
