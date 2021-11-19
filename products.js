@@ -6,7 +6,7 @@ let products = [
         "location": "London",
         "price": 10,
         "availableInventory": 5,
-        "rating": 4
+        "rating": 5
     },
     {
         "id": 2,
@@ -24,7 +24,7 @@ let products = [
         "location": "London",
         "price": 77,
         "availableInventory": 5,
-        "rating": 4
+        "rating": 2
     },
     {
         "id": 4,
@@ -33,7 +33,7 @@ let products = [
         "location": "London",
         "price": 83,
         "availableInventory": 5,
-        "rating": 4
+        "rating": 2
     },
     {
         "id": 5,
@@ -42,7 +42,7 @@ let products = [
         "location": "London",
         "price": 33,
         "availableInventory": 5,
-        "rating": 4
+        "rating": 3
     },
     {
         "id": 6,
@@ -50,7 +50,7 @@ let products = [
         "subject": "<strong>Design and Technology</strong>",
         "location": "London",
         "price": 16,
-        "availableInventory": 5,
+        "availableInventory": 4,
         "rating": 4
     },
     {
@@ -60,7 +60,7 @@ let products = [
         "location": "London",
         "price": 50,
         "availableInventory": 5,
-        "rating": 4
+        "rating": 1
     },
     {
         "id": 8,
@@ -69,7 +69,7 @@ let products = [
         "location": "London",
         "price": 99,
         "availableInventory": 5,
-        "rating": 4
+        "rating": 0
     },
     {
         "id": 9,
@@ -78,7 +78,7 @@ let products = [
         "location": "London",
         "price": 100,
         "availableInventory": 5,
-        "rating": 4
+        "rating": 5
     },
     {
         "id": 10,
@@ -87,6 +87,6 @@ let products = [
         "location": "London",
         "price": 72,
         "availableInventory": 5,
-        "rating": 4
+        "rating": 2
     }
 ] 
