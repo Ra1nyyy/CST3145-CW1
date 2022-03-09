@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Individual Coursework 1</title>
-    <script src="https://unpkg.com/vue"></script>
+    <!-- <script src="https://unpkg.com/vue"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="products.js"></script>
     <link rel="stylesheet" href="vue.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -150,7 +151,7 @@
                     zip: '',
                     state: '',
                     method: 'Home',
-                    sendGift: 'Send as a gift',
+                    sendGift: 'Send as a gift!',
                     dontSendGift: 'Do no send as a gift'
                 },
                 states:{
@@ -171,6 +172,15 @@
                         rating: 4
                     },
                 cart: []
+            },
+            created: function() {
+            fetch('https://cst3145-cw2-an942.herokuapp.com/collection/lesson').then(
+                function(response) {
+                    response.json().then(
+                        function (json) {
+                            webstore.product = json;
+                        });
+                })
             },
             methods: {
                 addToCart(product){
