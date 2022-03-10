@@ -1,7 +1,7 @@
 let products = [
     {
         "id": 1,
-        "image": "static/images/math.png",
+        "image": "images/math.png",
         "subject": "<strong>Math</strong>",
         "location": "China",
         "price": 10,
@@ -10,7 +10,7 @@ let products = [
     },
     {
         "id": 2,
-        "image": "static/images/english.jpg",
+        "image": "images/english.jpg",
         "subject": "<strong>English</strong>",
         "location": "USA",
         "price": 120,
@@ -19,7 +19,7 @@ let products = [
     },
     {
         "id": 3,
-        "image": "static/images/science.png",
+        "image": "images/science.png",
         "subject": "<strong>Science</strong>",
         "location": "Tokyo",
         "price": 77,
@@ -28,7 +28,7 @@ let products = [
     },
     {
         "id": 4,
-        "image": "static/images/history.jpg",
+        "image": "images/history.jpg",
         "subject": "<strong>History</strong>",
         "location": "Germany",
         "price": 83,
@@ -37,7 +37,7 @@ let products = [
     },
     {
         "id": 5,
-        "image": "static/images/geo.jpg",
+        "image": "images/geo.jpg",
         "subject": "<strong>Geography</strong>",
         "location": "Arica",
         "price": 33,
@@ -46,7 +46,7 @@ let products = [
     },
     {
         "id": 6,
-        "image": "static/images/dandt.jpg",
+        "image": "images/dandt.jpg",
         "subject": "<strong>Design and Technology</strong>",
         "location": "California",
         "price": 16,
@@ -55,7 +55,7 @@ let products = [
     },
     {
         "id": 7,
-        "image": "static/images/art.jpg",
+        "image": "images/art.jpg",
         "subject": "<strong>Art and Design</strong>",
         "location": "London",
         "price": 50,
@@ -64,7 +64,7 @@ let products = [
     },
     {
         "id": 8,
-        "image": "static/images/music.jpg",
+        "image": "images/music.jpg",
         "subject": "<strong>Music</strong>",
         "location": "South Korea",
         "price": 99,
@@ -73,7 +73,7 @@ let products = [
     },
     {
         "id": 9,
-        "image": "static/images/pe.jpg",
+        "image": "images/pe.jpg",
         "subject": "<strong>Physical Education</strong>",
         "location": "Jamaica",
         "price": 100,
@@ -82,7 +82,7 @@ let products = [
     },
     {
         "id": 10,
-        "image": "static/images/computing.jpg",
+        "image": "images/computing.jpg",
         "subject": "<strong>Computing</strong>",
         "location": "Philippines",
         "price": 72,

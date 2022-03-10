@@ -173,15 +173,6 @@
                     },
                 cart: []
             },
-            created: function() {
-            fetch('https://cst3145-cw2-an942.herokuapp.com/collection/lesson').then(
-                function(response) {
-                    response.json().then(
-                        function (json) {
-                            webstore.product = json;
-                        });
-                })
-            },
             methods: {
                 addToCart(product){
                     this.cart.push(product.id);
@@ -269,6 +260,15 @@
                 itemLeft (product){
                     return product.availableInventory - this.cartCount(product.id)
                 }
+            },
+            created: function() {
+            fetch('https://cst3145-cw2-an942.herokuapp.com/collection/lesson').then(
+                function(response) {
+                    response.json().then(
+                        function (json) {
+                            webstore.product = json;
+                        });
+                })
             },
             computed: {
                 cartItemCount: function(id){
